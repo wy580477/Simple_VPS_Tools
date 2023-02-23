@@ -18,7 +18,31 @@ wget -O - 'https://raw.githubusercontent.com/wy580477/Simple_VPS_Tools/main/inst
 
 ## 卸载
 ```console
-rm -f /usr/local/bin/ouch /usr/local/bin/btop /usr/local/bin/nexttrace /usr/local/bin/doggo /usr/local/bin/speedtest /usr/local/bin/wormhole
+rm -f /usr/local/bin/ouch /usr/local/bin/btop /usr/local/bin/nexttrace /usr/local/bin/doggo /usr/local/bin/speedtest /usr/local/bin/wormhole /usr/local/bin/duf /usr/local/bin/gdu /usr/local/bin/fd
+```
+## 命令示例
+```console
+# 解压缩:            
+ouch d <文件>
+# btop 系统资源监视:
+btop
+# 路由追踪:   
+nexttrace <ip/域名>'
+# DNS 查询:
+doggo @udp://1.1.1.1 <domain> A AAAA --time
+doggo @tcp://1.1.1.1 <domain> A AAAA --time
+doggo @tls://1.1.1.1 <domain> A AAAA --time
+doggo @https://1.1.1.1/dns-query <domain> A AAAA --time
+# speedtest 网速测试:
+speedtest
+# 端到端加密文件传输:
+wormhole send <文件/目录>
+# 磁盘空间使用情况查看
+duf
+# 目录占用空间分析
+gdu <path>
+# 更容易使用的 find 命令
+fd <字符串> <路径>
 ```
 
 ## 鸣谢
