@@ -18,7 +18,7 @@ wget -O - 'https://raw.githubusercontent.com/wy580477/Simple_VPS_Tools/main/inst
 
 ## 卸载
 ```console
-rm -r /usr/local/bin/ouch /usr/local/bin/btop /usr/local/bin/nexttrace /usr/local/bin/doggo /usr/local/bin/speedtest /usr/local/bin/wormhole
+rm -f /usr/local/bin/ouch /usr/local/bin/btop /usr/local/bin/nexttrace /usr/local/bin/doggo /usr/local/bin/speedtest /usr/local/bin/wormhole
 ```
 
 ## 鸣谢
