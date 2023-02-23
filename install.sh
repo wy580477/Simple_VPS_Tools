@@ -9,10 +9,16 @@ case "$OS_type" in
 x86_64 | amd64)
     OS_type='x86_64'
     OS_type2='amd64'
+    OS_type3='x86_64'
+    OS_type4='amd64_static'
+    OS_type5='i686-unknown-linux-musl'
     ;;
 aarch64 | arm64)
     OS_type='aarch64'
     OS_type2='arm64'
+    OS_type3='arm64'
+    OS_type4='arm64'
+    OS_type5='aarch64-unknown-linux-gnu'
     ;;
 *)
     echo 'OS type not supported'
@@ -52,14 +58,35 @@ echo 'Installing wormhole-william: End-to-end encrypted file transfer'
 wget -qO /usr/local/bin/wormhole https://github.com/psanford/wormhole-william/releases/latest/download/wormhole-william-linux-${OS_type2}
 chmod +x /usr/local/bin/wormhole
 
+# Install duf
+echo 'Installing duf: Disk Usage/Free Utility'
+RELEASE_LATEST="$(wget -o - -O /dev/null https://github.com/muesli/duf/releases/latest | grep -o 'v[0-9]*\..*' | tail -1)"
+wget -qO - https://github.com/muesli/duf/releases/download/${RELEASE_LATEST}/duf_${RELEASE_LATEST#v}_linux_${OS_type3}.tar.gz | tar xz -C ${DIR_TMP}
+install -m 755 ${DIR_TMP}/duf /usr/local/bin/duf
+
+# Install gdu
+echo 'Installing gdu: Fast disk usage analyzer'
+wget -qP ${DIR_TMP} https://github.com/dundee/gdu/releases/latest/download/gdu_linux_${OS_type4}.tgz
+ouch d ${DIR_TMP}/gdu* --dir ${DIR_TMP} -q
+install -m 755 ${DIR_TMP}/gdu_linux_${OS_type4} /usr/local/bin/gdu
+
+# Install fd
+echo 'Installing fd: A simple, fast and user-friendly alternative to find'
+RELEASE_LATEST="$(wget -o - -O /dev/null https://github.com/sharkdp/fd/releases/latest | grep -o 'v[0-9]*\..*' | tail -1)"
+wget -qO - https://github.com/sharkdp/fd/releases/download/${RELEASE_LATEST}/fd-${RELEASE_LATEST}-${OS_type5}.tar.gz | tar xz -C ${DIR_TMP}
+install -m 755 ${DIR_TMP}/fd*/fd /usr/local/bin/fd
+
 rm -rf ${DIR_TMP}
 
 # echo Usage
 echo ''
 echo 'Decompression:            ouch d <file>'
 echo 'btop system monitor:      btop'
-echo 'nexttrace route tracking: nexttrace <ip/domain>'
+echo 'network route tracking:   nexttrace <ip/domain>'
 echo 'doggo DNS client:         doggo @udp://1.1.1.1 <domain> A AAAA --time'
 echo 'speedtest-cli:            speedtest'
-echo 'wormhole-william:         wormhole send <file>'
+echo 'file transfer:            wormhole send <file>'
+echo 'Disk Usage/Free:          duf'
+echo 'Directory storage usage:  gdu <path>'
+echo 'find but user-friendly:   fd <string> <path>'
 
