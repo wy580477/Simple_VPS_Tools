@@ -2,25 +2,6 @@
 
 set -e
 
-# Install wget for dists that don't have it by default
-if ! command -v wget >/dev/null 2>&1; then
-    if command -v apt-get >/dev/null 2>&1; then
-        apt-get update
-        apt-get install -y wget
-    elif command -v dnf >/dev/null 2>&1; then
-        dnf install -y wget
-    elif command -v yum >/dev/null 2>&1; then
-        yum install -y wget
-    elif command -v pacman >/dev/null 2>&1; then
-        pacman -Sy --noconfirm wget
-    elif command -v zypper >/dev/null 2>&1; then
-        zypper install -y wget
-    else
-        echo 'Package manager not supported'
-        exit 1
-    fi
-fi
-
 DIR_TMP="$(mktemp -d)"
 
 OS_type="$(uname -m)"
