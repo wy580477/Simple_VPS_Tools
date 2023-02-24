@@ -1,12 +1,14 @@
 # Simple_VPS_Tools
 
-VPS 简单实用命令行工具一键安装脚本：压缩/解压缩、系统资源监视、路由追踪、DNS 查询、Speedtest 测试、加密文件传输、磁盘和目录占用空间查看、更容易使用的 find 命令。
+VPS 简单实用命令行工具一键安装脚本, 包括：
+
+压缩/解压缩、系统资源监视、TCP/HTTP/HTTPS Ping、路由追踪、DNS 查询、Speedtest 测试、加密文件传输、磁盘和目录占用空间查看、更容易使用的 find 命令。
 
 支持 x86_64 和 aarch64 架构，理论上适用各种 linux 主流发行版 （没有精力详细测试）。
 
-此脚本内工具均为独立执行文件，安装至 /usr/local/bin 目录下，大概占用 50MB 左右磁盘空间。
+此脚本内工具均为独立执行文件，安装至 /usr/local/bin 目录下，大概占用 60MB 左右磁盘空间。
 
-只有安装过程依赖 wget，如系统无 wget 命令请自行安装。
+安装过程依赖 wget，如系统无 wget 命令请自行安装。Alpine Linux 使用 wormhole 需要安装 gcompat: "apk add gcompat"。
 
 ## 安装
 
@@ -18,7 +20,7 @@ wget -O - 'https://raw.githubusercontent.com/wy580477/Simple_VPS_Tools/main/inst
 
 ## 卸载
 ```console
-rm -f /usr/local/bin/ouch /usr/local/bin/btop /usr/local/bin/nexttrace /usr/local/bin/doggo /usr/local/bin/speedtest /usr/local/bin/wormhole /usr/local/bin/duf /usr/local/bin/gdu /usr/local/bin/fd
+rm -f /usr/local/bin/ouch /usr/local/bin/btop /usr/local/bin/tcping /usr/local/bin/nexttrace /usr/local/bin/doggo /usr/local/bin/speedtest /usr/local/bin/wormhole /usr/local/bin/duf /usr/local/bin/gdu /usr/local/bin/fd
 ```
 ## 命令示例
 ```console
@@ -26,6 +28,11 @@ rm -f /usr/local/bin/ouch /usr/local/bin/btop /usr/local/bin/nexttrace /usr/loca
 ouch d <文件>
 # btop 系统资源监视:
 btop
+# TCP/HTTP/HTTPS Ping:
+tcping 1.1.1.1 443
+tcping [2606:4700::1111] 443
+tcping http://www.google.com
+tcping https://www.google.com
 # 路由追踪:   
 nexttrace <ip/域名>'
 # DNS 查询:
@@ -56,4 +63,5 @@ fd <字符串> <路径>
 - [muesli/duf](https://github.com/muesli/duf) 简单易用的磁盘使用空间查看工具，比 df 命令更直观
 - [dundee/gdu](https://github.com/dundee/gdu) 简单易用可互动的目录占用空间分析工具，比 du 命令更直观
 - [sharkdp/fd](https://github.com/sharkdp/fd) 更容易使用的 find 命令
+- [cloverstd/tcping](https://github.com/cloverstd/tcping) TCP/HTTP/HTTPS Ping 工具
 

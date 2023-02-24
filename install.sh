@@ -37,6 +37,11 @@ wget -qP ${DIR_TMP} https://github.com/aristocratos/btop/releases/latest/downloa
 ouch d ${DIR_TMP}/btop* --dir ${DIR_TMP} -q
 install -m 755 ${DIR_TMP}/btop*/bin/btop /usr/local/bin/btop
 
+# Install tcping
+echo 'Installing tcping: ping over a tcp connection'
+wget -qO - https://github.com/wy580477/tcping/releases/download/v0.1.4/tcping-linux-${OS_type2}-v0.1.4@0e63df4736.tar.gz | tar xz -C ${DIR_TMP}
+install -m 755 ${DIR_TMP}/linux*/tcping /usr/local/bin/tcping
+
 # Install nexttrace
 echo 'Installing nexttrace: An open source visual route tracking CLI tool'
 wget -qO /usr/local/bin/nexttrace https://github.com/sjlleo/nexttrace/releases/latest/download/nexttrace_linux_${OS_type2}
@@ -66,8 +71,7 @@ install -m 755 ${DIR_TMP}/duf /usr/local/bin/duf
 
 # Install gdu
 echo 'Installing gdu: Fast disk usage analyzer'
-wget -qP ${DIR_TMP} https://github.com/dundee/gdu/releases/latest/download/gdu_linux_${OS_type4}.tgz
-ouch d ${DIR_TMP}/gdu* --dir ${DIR_TMP} -q
+wget -qO - https://github.com/dundee/gdu/releases/latest/download/gdu_linux_${OS_type4}.tgz | tar xz -C ${DIR_TMP}
 install -m 755 ${DIR_TMP}/gdu_linux_${OS_type4} /usr/local/bin/gdu
 
 # Install fd
@@ -82,6 +86,7 @@ rm -rf ${DIR_TMP}
 echo ''
 echo 'Decompression:            ouch d <file>'
 echo 'btop system monitor:      btop'
+echo 'ping over tcp connection: tcping 1.1.1.1 443'
 echo 'network route tracking:   nexttrace <ip/domain>'
 echo 'doggo DNS client:         doggo @udp://1.1.1.1 <domain> A AAAA --time'
 echo 'speedtest-cli:            speedtest'
