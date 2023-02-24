@@ -12,6 +12,7 @@ x86_64 | amd64)
     OS_type3='x86_64'
     OS_type4='amd64_static'
     OS_type5='i686-unknown-linux-musl'
+    OS_type6='x86_64-unknown-linux-musl'
     ;;
 aarch64 | arm64)
     OS_type='aarch64'
@@ -19,6 +20,7 @@ aarch64 | arm64)
     OS_type3='arm64'
     OS_type4='arm64'
     OS_type5='aarch64-unknown-linux-gnu'
+    OS_type6='aarch64-unknown-linux-gnu'
     ;;
 *)
     echo 'OS type not supported'
@@ -80,18 +82,25 @@ RELEASE_LATEST="$(wget -o - -O /dev/null https://github.com/sharkdp/fd/releases/
 wget -qO - https://github.com/sharkdp/fd/releases/download/${RELEASE_LATEST}/fd-${RELEASE_LATEST}-${OS_type5}.tar.gz | tar xz -C ${DIR_TMP}
 install -m 755 ${DIR_TMP}/fd*/fd /usr/local/bin/fd
 
+# Install bat
+echo 'Installing bat: A cat(1) clone with wings'
+RELEASE_LATEST="$(wget -o - -O /dev/null https://github.com/sharkdp/bat/releases/latest | grep -o 'v[0-9]*\..*' | tail -1)"
+wget -qO - https://github.com/sharkdp/bat/releases/download/${RELEASE_LATEST}/bat-${RELEASE_LATEST}-${OS_type6}.tar.gz | tar xz -C ${DIR_TMP}
+install -m 755 ${DIR_TMP}/bat*/bat /usr/local/bin/bat
+
 rm -rf ${DIR_TMP}
 
 # echo Usage
 echo ''
-echo 'Decompression:            ouch d <file>'
-echo 'btop system monitor:      btop'
-echo 'ping over tcp connection: tcping 1.1.1.1 443'
-echo 'network route tracking:   nexttrace <ip/domain>'
-echo 'doggo DNS client:         doggo @udp://1.1.1.1 <domain> A AAAA --time'
-echo 'speedtest-cli:            speedtest'
-echo 'file transfer:            wormhole send <file>'
-echo 'Disk Usage/Free:          duf'
-echo 'Directory storage usage:  gdu <path>'
-echo 'find but user-friendly:   fd <string> <path>'
+echo 'Decompression:                 ouch d <file>'
+echo 'btop system monitor:           btop'
+echo 'ping over tcp connection:      tcping 1.1.1.1 443'
+echo 'network route tracking:        nexttrace <ip/domain>'
+echo 'doggo DNS client:              doggo @udp://1.1.1.1 <domain> A AAAA --time'
+echo 'speedtest-cli:                 speedtest'
+echo 'encrypted file transfer:       wormhole send <file>'
+echo 'Disk Usage/Free:               duf'
+echo 'Directory storage usage:       gdu <path>'
+echo 'find but user-friendly:        fd <string> <path>'
+echo 'cat with syntax highlighting:  bat <file>'
 

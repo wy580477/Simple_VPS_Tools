@@ -2,7 +2,7 @@
 
 VPS 简单实用命令行工具一键安装脚本, 包括：
 
-压缩/解压缩、系统资源监视、TCP/HTTP/HTTPS Ping、路由追踪、DNS 查询、Speedtest 测试、加密文件传输、磁盘和目录占用空间查看、更容易使用的 find 命令。
+压缩/解压缩、系统资源监视、TCP/HTTP/HTTPS Ping、路由追踪、DNS 查询、Speedtest 测试、加密文件传输、磁盘和目录占用空间查看、更容易使用的 find 命令、有代码高亮功能的 cat 命令。
 
 支持 x86_64 和 aarch64 架构，理论上适用各种 linux 主流发行版 （没有精力详细测试）。
 
@@ -20,7 +20,8 @@ wget -O - 'https://raw.githubusercontent.com/wy580477/Simple_VPS_Tools/main/inst
 
 ## 卸载
 ```console
-rm -f /usr/local/bin/ouch /usr/local/bin/btop /usr/local/bin/tcping /usr/local/bin/nexttrace /usr/local/bin/doggo /usr/local/bin/speedtest /usr/local/bin/wormhole /usr/local/bin/duf /usr/local/bin/gdu /usr/local/bin/fd
+rm -f /usr/local/bin/ouch /usr/local/bin/btop /usr/local/bin/tcping /usr/local/bin/nexttrace /usr/local/bin/doggo /usr/local/bin/speedtest /usr/local/bin/wormhole /usr/local/bin/duf /usr/local/bin/gdu /usr/local/bin/fd /usr/local/bin/bat
+```
 ```
 ## 命令示例
 ```console
@@ -50,6 +51,8 @@ duf
 gdu <path>
 # 更容易使用的 find 命令
 fd <字符串> <路径>
+# 有代码高亮功能的 cat 命令
+bat <文件>
 ```
 
 ## 鸣谢
@@ -63,5 +66,5 @@ fd <字符串> <路径>
 - [muesli/duf](https://github.com/muesli/duf) 简单易用的磁盘使用空间查看工具，比 df 命令更直观
 - [dundee/gdu](https://github.com/dundee/gdu) 简单易用可互动的目录占用空间分析工具，比 du 命令更直观
 - [sharkdp/fd](https://github.com/sharkdp/fd) 更容易使用的 find 命令
+- [sharkdp/bat](https://github.com/sharkdp/bat) 有代码高亮功能的 cat 命令
 - [cloverstd/tcping](https://github.com/cloverstd/tcping) TCP/HTTP/HTTPS Ping 工具
-
