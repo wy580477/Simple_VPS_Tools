@@ -53,7 +53,6 @@ Install_nexttrace() {
     chmod +x /usr/local/bin/nexttrace
 }
 
-
 Install_doggo() {
     echo 'Installing doggo: Command-line DNS Client for Humans'
     RELEASE_LATEST="$(wget -o - -O /dev/null https://github.com/mr-karan/doggo/releases/latest | grep -o 'v[0-9]*\..*' | tail -1)"
@@ -61,43 +60,43 @@ Install_doggo() {
     install -m 755 ${DIR_TMP}/doggo /usr/local/bin/doggo
 }
 
-Install_speedtest(){
-echo 'Installing speedtest-cli: Internet connection measurement'
-wget -qO - https://install.speedtest.net/app/cli/ookla-speedtest-1.2.0-linux-${OS_type}.tgz | tar xz -C ${DIR_TMP}
-install -m 755 ${DIR_TMP}/speedtest /usr/local/bin/speedtest
+Install_speedtest() {
+    echo 'Installing speedtest-cli: Internet connection measurement'
+    wget -qO - https://install.speedtest.net/app/cli/ookla-speedtest-1.2.0-linux-${OS_type}.tgz | tar xz -C ${DIR_TMP}
+    install -m 755 ${DIR_TMP}/speedtest /usr/local/bin/speedtest
 }
 
-Install_wormhole(){
-echo 'Installing wormhole-william: End-to-end encrypted file transfer'
-wget -qO /usr/local/bin/wormhole https://github.com/psanford/wormhole-william/releases/latest/download/wormhole-william-linux-${OS_type2}
-chmod +x /usr/local/bin/wormhole
+Install_wormhole() {
+    echo 'Installing wormhole-william: End-to-end encrypted file transfer'
+    wget -qO /usr/local/bin/wormhole https://github.com/psanford/wormhole-william/releases/latest/download/wormhole-william-linux-${OS_type2}
+    chmod +x /usr/local/bin/wormhole
 }
 
-Install_duf(){
-echo 'Installing duf: Disk Usage/Free Utility'
-RELEASE_LATEST="$(wget -o - -O /dev/null https://github.com/muesli/duf/releases/latest | grep -o 'v[0-9]*\..*' | tail -1)"
-wget -qO - https://github.com/muesli/duf/releases/download/${RELEASE_LATEST}/duf_${RELEASE_LATEST#v}_linux_${OS_type3}.tar.gz | tar xz -C ${DIR_TMP}
-install -m 755 ${DIR_TMP}/duf /usr/local/bin/duf
+Install_duf() {
+    echo 'Installing duf: Disk Usage/Free Utility'
+    RELEASE_LATEST="$(wget -o - -O /dev/null https://github.com/muesli/duf/releases/latest | grep -o 'v[0-9]*\..*' | tail -1)"
+    wget -qO - https://github.com/muesli/duf/releases/download/${RELEASE_LATEST}/duf_${RELEASE_LATEST#v}_linux_${OS_type3}.tar.gz | tar xz -C ${DIR_TMP}
+    install -m 755 ${DIR_TMP}/duf /usr/local/bin/duf
 }
 
-Install_gdu(){
-echo 'Installing gdu: Fast disk usage analyzer'
-wget -qO - https://github.com/dundee/gdu/releases/latest/download/gdu_linux_${OS_type4}.tgz | tar xz -C ${DIR_TMP}
-install -m 755 ${DIR_TMP}/gdu_linux_${OS_type4} /usr/local/bin/gdu
+Install_gdu() {
+    echo 'Installing gdu: Fast disk usage analyzer'
+    wget -qO - https://github.com/dundee/gdu/releases/latest/download/gdu_linux_${OS_type4}.tgz | tar xz -C ${DIR_TMP}
+    install -m 755 ${DIR_TMP}/gdu_linux_${OS_type4} /usr/local/bin/gdu
 }
 
-Install_fd(){
-echo 'Installing fd: A simple, fast and user-friendly alternative to find'
-RELEASE_LATEST="$(wget -o - -O /dev/null https://github.com/sharkdp/fd/releases/latest | grep -o 'v[0-9]*\..*' | tail -1)"
-wget -qO - https://github.com/sharkdp/fd/releases/download/${RELEASE_LATEST}/fd-${RELEASE_LATEST}-${OS_type5}.tar.gz | tar xz -C ${DIR_TMP}
-install -m 755 ${DIR_TMP}/fd*/fd /usr/local/bin/fd
+Install_fd() {
+    echo 'Installing fd: A simple, fast and user-friendly alternative to find'
+    RELEASE_LATEST="$(wget -o - -O /dev/null https://github.com/sharkdp/fd/releases/latest | grep -o 'v[0-9]*\..*' | tail -1)"
+    wget -qO - https://github.com/sharkdp/fd/releases/download/${RELEASE_LATEST}/fd-${RELEASE_LATEST}-${OS_type5}.tar.gz | tar xz -C ${DIR_TMP}
+    install -m 755 ${DIR_TMP}/fd*/fd /usr/local/bin/fd
 }
 
-Install_bat(){
-echo 'Installing bat: A cat(1) clone with wings'
-RELEASE_LATEST="$(wget -o - -O /dev/null https://github.com/sharkdp/bat/releases/latest | grep -o 'v[0-9]*\..*' | tail -1)"
-wget -qO - https://github.com/sharkdp/bat/releases/download/${RELEASE_LATEST}/bat-${RELEASE_LATEST}-${OS_type6}.tar.gz | tar xz -C ${DIR_TMP}
-install -m 755 ${DIR_TMP}/bat*/bat /usr/local/bin/bat
+Install_bat() {
+    echo 'Installing bat: A cat(1) clone with wings'
+    RELEASE_LATEST="$(wget -o - -O /dev/null https://github.com/sharkdp/bat/releases/latest | grep -o 'v[0-9]*\..*' | tail -1)"
+    wget -qO - https://github.com/sharkdp/bat/releases/download/${RELEASE_LATEST}/bat-${RELEASE_LATEST}-${OS_type6}.tar.gz | tar xz -C ${DIR_TMP}
+    install -m 755 ${DIR_TMP}/bat*/bat /usr/local/bin/bat
 }
 
 Install_ouch
