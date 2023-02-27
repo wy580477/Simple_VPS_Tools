@@ -55,7 +55,7 @@ Install_nexttrace() {
 
 Install_doggo() {
     echo 'Installing doggo: Command-line DNS Client for Humans'
-    RELEASE_LATEST="$(wget -o - -O /dev/null https://github.com/mr-karan/doggo/releases/latest | grep -o 'v[0-9]*\..*' | tail -1)"
+    RELEASE_LATEST="$(wget -S -O /dev/null https://github.com/mr-karan/doggo/releases/latest 2>&1 | grep -o 'v[0-9]*\..*' | tail -1)"
     wget -qO - https://github.com/mr-karan/doggo/releases/download/${RELEASE_LATEST}/doggo_${RELEASE_LATEST#v}_linux_${OS_type2}.tar.gz | tar xz -C ${DIR_TMP}
     install -m 755 ${DIR_TMP}/doggo /usr/local/bin/doggo
 }
@@ -74,7 +74,7 @@ Install_wormhole() {
 
 Install_duf() {
     echo 'Installing duf: Disk Usage/Free Utility'
-    RELEASE_LATEST="$(wget -o - -O /dev/null https://github.com/muesli/duf/releases/latest | grep -o 'v[0-9]*\..*' | tail -1)"
+    RELEASE_LATEST="$(wget -S -O /dev/null https://github.com/muesli/duf/releases/latest 2>&1 | grep -o 'v[0-9]*\..*' | tail -1)"
     wget -qO - https://github.com/muesli/duf/releases/download/${RELEASE_LATEST}/duf_${RELEASE_LATEST#v}_linux_${OS_type3}.tar.gz | tar xz -C ${DIR_TMP}
     install -m 755 ${DIR_TMP}/duf /usr/local/bin/duf
 }
@@ -87,14 +87,14 @@ Install_gdu() {
 
 Install_fd() {
     echo 'Installing fd: A simple, fast and user-friendly alternative to find'
-    RELEASE_LATEST="$(wget -o - -O /dev/null https://github.com/sharkdp/fd/releases/latest | grep -o 'v[0-9]*\..*' | tail -1)"
+    RELEASE_LATEST="$(wget -S -O /dev/null https://github.com/sharkdp/fd/releases/latest 2>&1 | grep -o 'v[0-9]*\..*' | tail -1)"
     wget -qO - https://github.com/sharkdp/fd/releases/download/${RELEASE_LATEST}/fd-${RELEASE_LATEST}-${OS_type5}.tar.gz | tar xz -C ${DIR_TMP}
     install -m 755 ${DIR_TMP}/fd*/fd /usr/local/bin/fd
 }
 
 Install_bat() {
     echo 'Installing bat: A cat(1) clone with wings'
-    RELEASE_LATEST="$(wget -o - -O /dev/null https://github.com/sharkdp/bat/releases/latest | grep -o 'v[0-9]*\..*' | tail -1)"
+    RELEASE_LATEST="$(wget -S -O /dev/null https://github.com/sharkdp/bat/releases/latest 2>&1 | grep -o 'v[0-9]*\..*' | tail -1)"
     wget -qO - https://github.com/sharkdp/bat/releases/download/${RELEASE_LATEST}/bat-${RELEASE_LATEST}-${OS_type6}.tar.gz | tar xz -C ${DIR_TMP}
     install -m 755 ${DIR_TMP}/bat*/bat /usr/local/bin/bat
 }
