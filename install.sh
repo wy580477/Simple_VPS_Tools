@@ -93,16 +93,10 @@ Install_fd() {
 }
 
 Install_bat() {
-    echo 'Installing bat: A cat clone with wings'
+    echo 'Installing bat: A cat(1) clone with wings'
     RELEASE_LATEST="$(wget -S -O /dev/null https://github.com/sharkdp/bat/releases/latest 2>&1 | grep -o 'v[0-9]*\..*' | tail -1)"
     wget -qO - https://github.com/sharkdp/bat/releases/download/${RELEASE_LATEST}/bat-${RELEASE_LATEST}-${OS_type6}.tar.gz | tar xz -C ${DIR_TMP}
     install -m 755 ${DIR_TMP}/bat*/bat /usr/local/bin/bat
-}
-
-Install_macchina() {
-    echo 'Installing macchina: A system information frontend'
-    wget -qO /usr/local/bin/macchina https://github.com/Macchina-CLI/macchina/releases/latest/download/macchina-linux-${OS_type}
-    chmod +x /usr/local/bin/macchina
 }
 
 Install_ouch
@@ -116,7 +110,6 @@ Install_duf &
 Install_gdu &
 Install_fd &
 Install_bat &
-Install_macchina &
 
 wait
 rm -rf ${DIR_TMP}
@@ -134,4 +127,3 @@ echo 'Disk Usage/Free:               duf'
 echo 'Directory storage usage:       gdu <path>'
 echo 'find but user-friendly:        fd <string> <path>'
 echo 'cat with syntax highlighting:  bat <file>'
-echo 'system information frontend:   macchina'
