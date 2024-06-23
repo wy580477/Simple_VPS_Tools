@@ -13,6 +13,7 @@ x86_64 | amd64)
     OS_type4='amd64_static'
     OS_type5='i686-unknown-linux-musl'
     OS_type6='x86_64-unknown-linux-musl'
+    OS_type7='amd64'
     ;;
 aarch64 | arm64)
     OS_type='aarch64'
@@ -21,6 +22,7 @@ aarch64 | arm64)
     OS_type4='arm64'
     OS_type5='aarch64-unknown-linux-gnu'
     OS_type6='aarch64-unknown-linux-gnu'
+    OS_type7='armv8'
     ;;
 *)
     echo 'OS type not supported'
@@ -51,6 +53,15 @@ Install_nexttrace() {
     echo 'Installing nexttrace: An open source visual route tracking CLI tool'
     wget -qO /usr/local/bin/nexttrace https://github.com/sjlleo/nexttrace/releases/latest/download/nexttrace_linux_${OS_type2}
     chmod +x /usr/local/bin/nexttrace
+}
+
+Install_nali() {
+    echo 'Installing nali: An open source visual route tracking CLI tool'
+    RELEASE_LATEST="$(wget -S -O /dev/null https://github.com/zu1k/nali/releases/latest 2>&1 | grep -o 'v[0-9]*\..*' | tail -1)"
+    wget -qP ${DIR_TMP} https://github.com/zu1k/nali/releases/download/${RELEASE_LATEST}/nali-linux-${OS_type7}-${RELEASE_LATEST}.gz
+    ouch d ${DIR_TMP}/nali* --dir ${DIR_TMP} -q
+    rm  ${DIR_TMP}/nali-linux-${OS_type7}-${RELEASE_LATEST}.gz
+    install -m 755 ${DIR_TMP}/nali* /usr/local/bin/nali
 }
 
 Install_q() {
@@ -103,6 +114,7 @@ Install_ouch
 Install_btop &
 Install_tcping &
 Install_nexttrace &
+Install_nali &
 Install_q &
 Install_speedtest &
 Install_wormhole &
@@ -120,6 +132,7 @@ echo 'Decompression:                 ouch d <file>'
 echo 'btop system monitor:           btop'
 echo 'ping over tcp connection:      tcping 1.1.1.1 443'
 echo 'network route tracking:        nexttrace <ip/domain>'
+echo 'Querying IP geo info'          nali 1.1.1.1
 echo 'q DNS client:                  q <domain> A AAAA @1.1.1.1 -S'
 echo 'speedtest-cli:                 speedtest'
 echo 'encrypted file transfer:       wormhole send <file>'

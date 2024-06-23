@@ -36,6 +36,8 @@ tcping http://www.google.com
 tcping https://www.google.com
 # 路由追踪:   
 nexttrace <ip/域名>'
+# IP 地理信息查询:
+nali 1.1.1.1
 # DNS 查询:
 q <domain> A AAAA @1.1.1.1 -S
 q <domain> A AAAA @tcp://1.1.1.1 -S
@@ -60,6 +62,7 @@ bat <文件>
 - [ouch-org/ouch](https://github.com/ouch-org/ouch) 简单易用压缩/解压缩工具，再也不怕忘记解压缩命令了。
 - [aristocratos/btop](https://github.com/aristocratos/btop) 炫酷系统资源监视工具
 - [sjlleo/nexttrace](https://github.com/sjlleo/nexttrace) 可视化路由追踪工具
+- [zu1k/nali](https://github.com/zu1k/nali) IP 地理信息查询工具
 - [natesales/q](https://github.com/natesales/q) DNS 查询工具，支持 UDP/TCP/TLS/DOH 多种协议
 - [Speedtest CLI](https://www.speedtest.net/apps/cli) 来自 speedtest.net 的网络测试工具
 - [psanford/wormhole-william](https://github.com/psanford/wormhole-william) 非常易用的端到端加密文件传输工具，使用一次性的接收码
