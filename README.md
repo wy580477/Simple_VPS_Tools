@@ -20,7 +20,7 @@ wget -O - 'https://raw.githubusercontent.com/wy580477/Simple_VPS_Tools/main/inst
 
 ## 卸载
 ```console
-rm -f /usr/local/bin/ouch /usr/local/bin/btop /usr/local/bin/tcping /usr/local/bin/nexttrace /usr/local/bin/doggo /usr/local/bin/speedtest /usr/local/bin/wormhole /usr/local/bin/duf /usr/local/bin/gdu /usr/local/bin/fd /usr/local/bin/bat
+rm -f /usr/local/bin/ouch /usr/local/bin/btop /usr/local/bin/tcping /usr/local/bin/nexttrace /usr/local/bin/q /usr/local/bin/nali /usr/local/bin/speedtest /usr/local/bin/wormhole /usr/local/bin/duf /usr/local/bin/gdu /usr/local/bin/fd /usr/local/bin/bat
 ```
 ```
 ## 命令示例
