@@ -53,11 +53,11 @@ Install_nexttrace() {
     chmod +x /usr/local/bin/nexttrace
 }
 
-Install_doggo() {
-    echo 'Installing doggo: Command-line DNS Client for Humans'
-    RELEASE_LATEST="$(wget -S -O /dev/null https://github.com/mr-karan/doggo/releases/latest 2>&1 | grep -o 'v[0-9]*\..*' | tail -1)"
-    wget -qO - https://github.com/mr-karan/doggo/releases/download/${RELEASE_LATEST}/doggo_${RELEASE_LATEST#v}_linux_${OS_type2}.tar.gz | tar xz -C ${DIR_TMP}
-    install -m 755 ${DIR_TMP}/doggo /usr/local/bin/doggo
+Install_q() {
+    echo 'Installing q: A tiny command line DNS client'
+    RELEASE_LATEST="$(wget -S -O /dev/null https://github.com/natesales/q/releases/latest 2>&1 | grep -o 'v[0-9]*\..*' | tail -1)"
+    wget -qO - https://github.com/natesales/q/releases/download/${RELEASE_LATEST}/q_${RELEASE_LATEST#v}_linux_${OS_type2}.tar.gz | tar xz -C ${DIR_TMP}
+    install -m 755 ${DIR_TMP}/q /usr/local/bin/q
 }
 
 Install_speedtest() {
@@ -103,7 +103,7 @@ Install_ouch
 Install_btop &
 Install_tcping &
 Install_nexttrace &
-Install_doggo &
+Install_q &
 Install_speedtest &
 Install_wormhole &
 Install_duf &
@@ -120,7 +120,7 @@ echo 'Decompression:                 ouch d <file>'
 echo 'btop system monitor:           btop'
 echo 'ping over tcp connection:      tcping 1.1.1.1 443'
 echo 'network route tracking:        nexttrace <ip/domain>'
-echo 'doggo DNS client:              doggo @udp://1.1.1.1 <domain> A AAAA --time'
+echo 'q DNS client:                  q <domain> A AAAA @1.1.1.1 -S'
 echo 'speedtest-cli:                 speedtest'
 echo 'encrypted file transfer:       wormhole send <file>'
 echo 'Disk Usage/Free:               duf'
