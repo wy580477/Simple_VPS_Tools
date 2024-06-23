@@ -132,7 +132,7 @@ echo 'Decompression:                 ouch d <file>'
 echo 'btop system monitor:           btop'
 echo 'ping over tcp connection:      tcping 1.1.1.1 443'
 echo 'network route tracking:        nexttrace <ip/domain>'
-echo 'Querying IP geo info':         nali 1.1.1.1
+echo 'Querying IP geo info:          nali 1.1.1.1'
 echo 'q DNS client:                  q <domain> A AAAA @1.1.1.1 -S'
 echo 'speedtest-cli:                 speedtest'
 echo 'encrypted file transfer:       wormhole send <file>'
