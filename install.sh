@@ -39,7 +39,7 @@ Install_ouch() {
 Install_btop() {
     echo 'Installing btop: A monitor of resources'
     wget -qP ${DIR_TMP} https://github.com/aristocratos/btop/releases/latest/download/btop-${OS_type}-linux-musl.tbz
-    ouch d ${DIR_TMP}/btop* --dir ${DIR_TMP} -q
+    ouch -y d ${DIR_TMP}/btop* --dir ${DIR_TMP} -q
     install -m 755 ${DIR_TMP}/btop*/bin/btop /usr/local/bin/btop
 }
 
@@ -51,7 +51,7 @@ Install_tcping() {
 
 Install_nexttrace() {
     echo 'Installing nexttrace: An open source visual route tracking CLI tool'
-    wget -qO /usr/local/bin/nexttrace https://github.com/sjlleo/nexttrace/releases/latest/download/nexttrace_linux_${OS_type2}
+    wget -qO /usr/local/bin/nexttrace https://github.com/nxtrace/NTrace-core/releases/latest/download/nexttrace_linux_${OS_type2}
     chmod +x /usr/local/bin/nexttrace
 }
 
@@ -59,7 +59,7 @@ Install_nali() {
     echo 'Installing nali: An open source visual route tracking CLI tool'
     RELEASE_LATEST="$(wget -S -O /dev/null https://github.com/zu1k/nali/releases/latest 2>&1 | grep -o 'v[0-9]*\..*' | tail -1)"
     wget -qP ${DIR_TMP} https://github.com/zu1k/nali/releases/download/${RELEASE_LATEST}/nali-linux-${OS_type7}-${RELEASE_LATEST}.gz
-    ouch d ${DIR_TMP}/nali* --dir ${DIR_TMP} -q
+    ouch -y d ${DIR_TMP}/nali* --dir ${DIR_TMP} -q
     rm  ${DIR_TMP}/nali-linux-${OS_type7}-${RELEASE_LATEST}.gz
     install -m 755 ${DIR_TMP}/nali* /usr/local/bin/nali
 }
